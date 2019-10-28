@@ -11,10 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "@now/node": "^1.0.2",
-    "@types/pg": "^7.11.2",
     "pg": "^7.12.1"
   },
   "devDependencies": {
-    "ts-node-dev": "^1.0.0-pre.43"
+    "@types/pg": "^7.11.2"
   }
 }
