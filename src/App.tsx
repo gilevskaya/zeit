@@ -10,37 +10,40 @@ interface IUser {
 }
 
 const App: React.FC = () => {
-  const [user, setUser] = React.useState<IUser | undefined>();
+  const [users, setUsers] = React.useState<IUser[] | undefined>();
   React.useEffect(() => {
     axios
-      .get("/api/user")
-      .then((user: AxiosResponse<IUser>) => {
-        setUser(user.data);
+      .get("/api/customers/all")
+      .then((users: AxiosResponse<IUser[]>) => {
+        setUsers(users.data);
       })
       .catch(console.error);
-  }, []);
+  });
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          {user ? (
+          {Array.isArray(users) ? (
             <>
-              {user.name}: <code>{user.email}</code>
+              {users.map(u => (
+                <div>
+                  {u.name}: <code>{u.email}</code>
+                </div>
+              ))}
             </>
           ) : (
             <>Loading...</>
           )}
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+        <button
+          onClick={() => {
+            axios.post("/api/customers/");
+          }}
         >
-          Learn React
-        </a>
+          Add User
+        </button>
       </header>
     </div>
   );
