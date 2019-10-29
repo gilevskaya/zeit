@@ -1,12 +1,12 @@
 import pg from "pg";
 
-const { DB_USER, DB_PASSWORD } = process.env;
+const { DB_HOST, DB_USER, DB_PASSWORD, DB_NAME } = process.env;
 
 const config = {
-  host: "boba-sql.postgres.database.azure.com",
-  user: "alena@boba-sql",
+  host: DB_HOST,
+  user: DB_USER,
   password: DB_PASSWORD,
-  database: "testdb",
+  database: DB_NAME,
   port: 5432,
   ssl: true
 };

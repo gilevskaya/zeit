@@ -1,5 +1,8 @@
 {
   "env": {
-    "DB_PASSWORD": "@db-password"
+    "DB_HOST": "@db-host",
+    "DB_USER": "@db-user",
+    "DB_PASSWORD": "@db-password",
+    "DB_NAME": "@db-name"
   }
 }
